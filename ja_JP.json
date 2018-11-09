@@ -1,5 +1,5 @@
 {
-    "app.name": "TODOリスト",
+    "app.spiralv2": "スパラスV２",
     "app.login.text": "下記のログイン情報を入力してログインしてください",
     "app.login.message.success": "ログインに成功しました！\\ n再び%sにようこそ！",
     "app.login.message.error": "正しいユーザー名とパスワードを入力してください",
@@ -17,5 +17,7 @@
         "other": "ただ1人のユーザーがオンライン"
     },
     "app.title": "デモ",
-    "app.label": "ラベル"
+    "app.label": "ラベル",
+    "app.admin.title": "あとみんtitle",
+    "app.admin.label": "あとみんァべ"
 }
