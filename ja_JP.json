@@ -1,20 +1,19 @@
 {
-    "app.name": "TODO List",
-    "app.login.text": "Enter your credentials below to login",
-    "app.login.message.success": "Login successful !\\nWelcome back %s !",
-    "app.login.message.error": "Make sure you've entered the correct username and password",
-    "app.login.password.forget": "I forgot my password",
-    "app.login.password.reset": "Enter your address in the field below. A new password will be sent to your inbox.",
-    "app.register.text": "Sign up for free! No credit card required!",
-    "app.register.message.success": "Thank you for signing up !\\nPlease check your email address to activate your account.",
-    "app.register.message.error": "We were unable to sign you up.\\nPlease correct the marked fields.",
-    "app.menu.terms": "Terms and conditions",
+    "app.name": "TODOリスト",
+    "app.login.text": "下記のログイン情報を入力してログインしてください",
+    "app.login.message.success": "ログインに成功しました！\\ n再び%sにようこそ！",
+    "app.login.message.error": "正しいユーザー名とパスワードを入力してください",
+    "app.login.password.forget": "パスワードを忘れた",
+    "app.login.password.reset": "下のフィールドに住所を入力してください。 新しいパスワードが受信トレイに送信されます。",
+    "app.register.text": "無料でお申し込み頂けます！ クレジットカードは必要ありません！",
+    "app.register.message.success": "サインアップありがとうございます！\\ nあなたのメールアドレスを確認してアカウントを有効にしてください。",
+    "app.register.message.error": "私たちはあなたにサインアップできませんでした。\\ nマークされたフィールドを修正してください。",
+    "app.menu.terms": "規約と条件",
     "form_label": {
-        "app.login.text": "Username",
-        "app.login.pass": "Password"
+        "app.login.text": "ユーザー名",
+        "app.login.pass": "パスワード"
     },
     "app.users.active": {
-        "one": "Just one user online",
-        "other": "There are %d users online"
+        "other": "ただ1人のユーザーがオンライン"
     }
 }
