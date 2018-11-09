@@ -1,0 +1,59 @@
+<div class="mx-auto spg-login-content">
+  <div class="card p-4">
+    <h5 class="pl-2 py-3 font-weight-bold">パスワード再設定</h5>
+    <ng-container *ngIf="validToken && !passwordChanged">
+      <div *ngIf="isError" class="text-danger text-center mt-3">エラーが発生しました</div>
+      <div class="mt-4 mt-3 px-3">
+        <form [formGroup]="form">
+          <div class="form-group">
+            <label for="password">
+            <i class="fa fa-lock fa-fw" aria-hidden="true"></i> 新しいパスワード
+          </label>
+            <input type="password"
+              formControlName="password"
+              class="form-control"
+              id="password"
+              spgAutofocus>
+            <spg-control-messages [control]="form.get('password')"></spg-control-messages>
+          </div>
+          <div class="form-group">
+            <label for="confirmPassword">
+              <i class="fa fa-lock fa-fw" aria-hidden="true"></i> 新しいパスワード（確認）
+            </label>
+            <input type="password"
+              formControlName="confirmPassword"
+              class="form-control"
+              id="confirmPassword">
+            <spg-control-messages [control]="form.get('confirmPassword')"></spg-control-messages>
+          </div>
+          <div class="form-group">
+            <button type="button"
+              class="btn btn-primary w-100 my-3"
+              (click)="onSubmit()"
+              [disabled]="!form.valid || isProcessing">再設定</button>
+          </div>
+        </form>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="passwordChanged">
+      <div class="my-4">
+        <p class="text-center">
+          パスワード再設定が完了しました。<br>
+          ログインページよりサービスにログインしてください。
+        </p>
+      </div>
+      <div class="text-center"><a [routerLink]="['/login']">ログインページに進む</a></div>
+    </ng-container>
+
+    <ng-container *ngIf="!validToken">
+      <div class="my-4">
+        <p class="text-center">
+          このURLは有効期限が切れているか正しくありません。<br>
+         パスワード再設定ページより再度お手続きください。
+        </p>
+      </div>
+      <div class="text-center"><a [routerLink]="['/password/reset']">パスワード再設定ページに戻る</a></div>
+    </ng-container>
+  </div>
+</div>
