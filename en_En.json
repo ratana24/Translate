@@ -16,5 +16,7 @@
     "app.users.active": {
         "one": "Just one user online",
         "other": "There are %d users online"
-    }
+    },
+    "app.title": "Demo",
+    "app.label": "Label"
 }
