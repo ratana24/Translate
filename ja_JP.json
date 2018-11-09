@@ -14,8 +14,7 @@
         "app.login.pass": "パスワード"
     },
     "app.users.active": {
-        "one": "ただ1人のユーザーがオンライン",
-        "other": "ラベル％d個のオンラインユーザーがいます"
+        "other": "ただ1人のユーザーがオンライン"
     },
     "app.title": "デモ",
     "app.label": "ラベル",
