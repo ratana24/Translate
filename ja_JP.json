@@ -1,0 +1,20 @@
+{
+    "app.name": "",
+    "app.login.text": "",
+    "app.login.message.success": "",
+    "app.login.message.error": "",
+    "app.login.password.forget": "",
+    "app.login.password.reset": "",
+    "app.register.text": "",
+    "app.register.message.success": "",
+    "app.register.message.error": "",
+    "app.menu.terms": "",
+    "form_label": {
+        "app.login.text": "",
+        "app.login.pass": ""
+    },
+    "app.users.active": {
+        "one": "",
+        "other": ""
+    }
+}
