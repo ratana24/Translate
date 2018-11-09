@@ -15,5 +15,7 @@
     },
     "app.users.active": {
         "other": "ただ1人のユーザーがオンライン"
-    }
+    },
+    "app.title": "デモ",
+    "app.label": "ラベル"
 }
