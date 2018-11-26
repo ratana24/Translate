@@ -1,59 +1,74 @@
-<div class="mx-auto spg-login-content">
-  <div class="card p-4">
-    <h5 class="pl-2 py-3 font-weight-bold">パスワード再設定</h5>
-    <ng-container *ngIf="validToken && !passwordChanged">
-      <div *ngIf="isError" class="text-danger text-center mt-3">エラーが発生しました</div>
-      <div class="mt-4 mt-3 px-3">
-        <form [formGroup]="form">
-          <div class="form-group">
-            <label for="password">
-            <i class="fa fa-lock fa-fw" aria-hidden="true"></i> 新しいパスワード
-          </label>
-            <input type="password"
-              formControlName="password"
-              class="form-control"
-              id="password"
-              spgAutofocus>
-            <spg-control-messages [control]="form.get('password')"></spg-control-messages>
-          </div>
-          <div class="form-group">
-            <label for="confirmPassword">
-              <i class="fa fa-lock fa-fw" aria-hidden="true"></i> 新しいパスワード（確認）
-            </label>
-            <input type="password"
-              formControlName="confirmPassword"
-              class="form-control"
-              id="confirmPassword">
-            <spg-control-messages [control]="form.get('confirmPassword')"></spg-control-messages>
-          </div>
-          <div class="form-group">
-            <button type="button"
-              class="btn btn-primary w-100 my-3"
-              (click)="onSubmit()"
-              [disabled]="!form.valid || isProcessing">再設定</button>
-          </div>
-        </form>
-      </div>
-    </ng-container>
-
-    <ng-container *ngIf="passwordChanged">
-      <div class="my-4">
-        <p class="text-center">
-          パスワード再設定が完了しました。<br>
-          ログインページよりサービスにログインしてください。
-        </p>
-      </div>
-      <div class="text-center"><a [routerLink]="['/login']">ログインページに進む</a></div>
-    </ng-container>
-
-    <ng-container *ngIf="!validToken">
-      <div class="my-4">
-        <p class="text-center">
-          このURLは有効期限が切れているか正しくありません。<br>
-         パスワード再設定ページより再度お手続きください。
-        </p>
-      </div>
-      <div class="text-center"><a [routerLink]="['/password/reset']">パスワード再設定ページに戻る</a></div>
-    </ng-container>
+<!-- Login error -->
+<ng-container *ngIf="isLoginError && !ipRestricted">
+  <div class="text-danger text-center mb-4">
+    {{ 'share.login-form.authentication-error' | translate }}
   </div>
-</div>
+</ng-container>
+<!-- IP Address Restriction Check: Current IP not allowed -->
+<ng-container *ngIf="ipRestricted">
+  <div class="text-danger text-center mb-4">{{ 'share.login-form.ip-not-allow' | translate }}</div>
+</ng-container>
+
+<ng-container>
+  <select (change)="changeLang($event.target.value)">
+    <option
+      *ngFor="let lang of languages; let i = index"
+      [value]="lang.lang"
+      [selected]="isCurrentLang(lang.lang)"
+    >
+      <span>{{ lang.label }}</span>
+    </option>
+  </select>
+</ng-container>
+
+<!-- Login form -->
+<form [formGroup]="form" (ngSubmit)="login()">
+  <div class="form-group">
+    <label for="email">
+      <i class="fa fa-envelope-o fa-fw" aria-hidden="true"></i>{{ 'common.email' | translate }}
+    </label>
+    <input
+      type="text"
+      formControlName="email"
+      class="form-control"
+      spellcheck="false"
+      [spgAutofocus]="!emailSaved"
+    />
+    <spg-control-messages [control]="form.get('email')"></spg-control-messages>
+  </div>
+  <div class="form-group">
+    <label for="password">
+      <i class="fa fa-lock fa-fw" aria-hidden="true"></i>{{ 'common.password' | translate }}
+    </label>
+    <input
+      type="password"
+      formControlName="password"
+      class="form-control"
+      id="password"
+      [spgAutofocus]="emailSaved"
+    />
+    <spg-control-messages [control]="form.get('password')"></spg-control-messages>
+  </div>
+  <div class="form-group">
+    <div class="form-check form-check-inline">
+      <label class="form-check-label">
+        <input
+          formControlName="saveCredentials"
+          class="form-check-input"
+          type="checkbox"
+          value="true"
+        />
+        {{ 'share.login-form.save-mail-address' | translate }}
+      </label>
+    </div>
+  </div>
+  <div class="form-group" *ngIf="showButton">
+    <button type="submit" class="btn btn-primary w-100" [disabled]="!form.valid || isProcessing">
+      {{ 'common.login' | translate }}
+    </button>
+  </div>
+  <div class="form-group text-center" *ngIf="showNavigate">
+    <a [routerLink]="['/password/reset']">{{ 'common.need-help-signin' | translate }}</a>
+  </div>
+  {{ 'common.testLogin' | translate }}
+</form>
